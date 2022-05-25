@@ -1,0 +1,64 @@
+.main__container__dashboard {
+  height: calc(100vh - 190px);
+  padding: 32px 70px 32px 32px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+thead tr {display: block}
+
+tbody {
+display: block;
+overflow: auto;
+height:224px;
+width: 100%
+}
+
+th {width: 13vw}
+
+td {width: 13vw}
+.visao_geral {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.visao_geral div {
+  width: 100%;
+  background-color: #d2dbea;
+  padding: 16px;
+  border-radius: 8px;
+  color: #545454
+}
+
+.visao_geral div p:nth-child(2) {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.tabela {
+  margin: 32px 0px 0px 0px;
+}
+
+.tabela table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0px 0px;
+}
+
+.tabela table thead tr th {
+  padding: 16px;
+  background-color: #d2dbea;
+  text-align: left;
+  color: #545454;
+}
+
+.tabela table tbody tr td {
+  padding: 16px;
+}
+
+.tabela table tbody tr:nth-child(even) {
+  background-color: #d2dbea30;
+}

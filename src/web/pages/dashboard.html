@@ -1,0 +1,40 @@
+{% block content %}
+
+<link rel="stylesheet" href="../styles/dashboard.css" />
+
+<main id="main_dashboard" class="main__container__dashboard">
+  <div class="visao_geral">
+    <div class="casos__relatados">
+      <p id="num_casos_dash">0</p>
+      <p>Ocorrências</p>
+    </div>
+    <div class="qtd__despejo">
+      <p id="num_despejo_peso">0</p>
+      <p>Despejos em Peso</p>
+    </div>
+    <div class="qtd__empresas">
+      <p id="num_despejo_litro">0</p>
+      <p>Despejos em Litro</p>
+    </div>
+  </div>
+  <div class="tabela">
+    <h3 style="color: #545454">Todas ocorrências</h3>
+    <table id="table_dashboard">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Empresa</th>
+          <th>Região</th>
+          <th>Descrição</th>
+          <th>Tipo de Despejo</th>
+          <th>Quantidade</th>
+        </tr>
+      </thead>
+      <tbody id="tbody_dashboard">
+      </tbody>
+    </table>
+  </div>
+</main>
+<script src="../scripts/dashboard.js"></script>
+
+{% endblock %}

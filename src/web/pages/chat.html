@@ -1,0 +1,27 @@
+{% block content %}
+
+<link rel="stylesheet" href="../styles/chat.css" />
+
+<main id="chat_main" class="main__container">
+  <div class="chat__container">
+    <div class="chat__mensagens" id="chat__mensagens">
+      <div class="mensagens__historico" id="msg_div_main"></div>
+      <br>
+      <div class="mensagens__chat row">
+        <div class="col-1">
+          <i style="font-size: 40px; left: 50%;" class="material-icons send">&#xe853;</i>
+        </div>
+        <div class="col-8">
+          <input onkeypress="enviarEnter(event)" type="text" class="chat__input" id="input_chat"
+            placeholder="Mensagem" />
+        </div>
+        <div class="col-1" style="padding: 10px;">
+          <i onclick="sendMessage()" class="material-icons send" style="cursor: pointer; right: 0;">&#xe163;</i>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<script type="text/javascript" src="../scripts/chat.js"></script>
+
+{% endblock %}
