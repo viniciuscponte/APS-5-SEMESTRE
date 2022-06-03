@@ -45,13 +45,9 @@ function changeScreen(screenName) {
         break;
     }
     if (screens[i] === screenName) {
-      console.log('block');
       screen.style.display = "block";
       eel.SaveScreen(screenName);
-      console.log(screen);
-      console.log('block');
     } else {
-      console.log('none');
       screen.style.display = "none";
     }
   }
@@ -85,19 +81,18 @@ function refresh(dados){
   if (dados[4] == "Usuario"){
     document.getElementById("usuarios-btn").style.display = "none";
     document.getElementById("dashboard-btn").style.display = "none";
+  } else {
+    timer();
   }
   document.getElementById("perfil__nome").textContent = dados[1];
   document.getElementById("perfil__icone").textContent = dados[1].split("")[0].toUpperCase();
-  console.log(dados[0]);
   changeScreen(dados[0]);
-  timer();
 }
 
 function timer() {
-  setInterval(() => {
-    sendMessageMain("", "dashboard")
-  }, 3000);
+  sendMessageMain("", "dashboard")
 }
+eel.expose(timer);
 
 // envia mensagem para o servidor
 async function sendMessageMain(msg, screen) {
@@ -106,8 +101,6 @@ async function sendMessageMain(msg, screen) {
 
 // recebe mensagem do servidor
 function receiveMessage(msg, screen) {
-  console.log(msg);
-  console.log(screen);
 
   if (typeof msg === "string"){
 
@@ -152,9 +145,6 @@ function receiveMessage(msg, screen) {
       nome = msg[0];
       ico = msg[1];
       nivel = msg[2];
-      console.log(nome);
-      console.log(ico);
-      console.log(screen);
       if (nome == 'USER IS ALREADY CONNECTED') {
         alert("Usuário já conectado!");
       } else if (nome == 'USER DOES NOT EXIST') {
@@ -164,11 +154,12 @@ function receiveMessage(msg, screen) {
         if (nivel == "Usuario"){
           document.getElementById("usuarios-btn").style.display = "none";
           document.getElementById("dashboard-btn").style.display = "none";
+        } else {
+          timer();
         }
         document.getElementById("perfil__nome").textContent = nome;
         document.getElementById("perfil__icone").textContent = ico;
         changeScreen('chat');
-        timer();
       }
     }
   } else{
@@ -183,31 +174,18 @@ function receiveMessage(msg, screen) {
       var dpjLitro = 0;
       var dpjQuilo = 0;
       var tamRows = msg.length;
-      console.log(tamRows != 0);
       if(tamRows != 0){
         for (let j=0; j<tamRows; j++){
           var thisrow = msg[j];
           const splitrow = thisrow.split("  :  ");
           if(splitrow[2] == "Litro"){
-            console.log(dpjLitro);
-            console.log(parseFloat(splitrow[3]));
             dpjLitro += parseFloat(splitrow[3]);
-            console.log(dpjLitro);
           } else if(splitrow[2] == "Mililitro"){
-            console.log(dpjLitro);
-            console.log(parseFloat(splitrow[3]) / 1000);
             dpjLitro += parseFloat(splitrow[3]) / 1000;
-            console.log(dpjLitro);
           } else if(splitrow[2] == "Quilograma") {
-            console.log(dpjQuilo);
-            console.log(parseFloat(splitrow[3]));
             dpjQuilo += parseFloat(splitrow[3]);
-            console.log(dpjQuilo);
           } else if(splitrow[2] == "Tonelada"){
-            console.log(dpjQuilo);
-            console.log(parseFloat(splitrow[3]) * 1000);
             dpjQuilo += parseFloat(splitrow[3]) * 1000;
-            console.log(dpjQuilo);
           }
           var tr = document.createElement("tr");
           var td1 = document.createElement("td");
@@ -241,6 +219,7 @@ function receiveMessage(msg, screen) {
           document.getElementById("num_despejo_litro").innerHTML = dpjLitro;
         }
       }
+      timer();
     }
   }
 }

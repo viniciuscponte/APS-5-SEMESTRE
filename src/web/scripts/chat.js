@@ -1,9 +1,3 @@
-eel.expose(closeChatScreen);
-
-function closeChatScreen() {
-  eel.stopWhile()();
-  window.close();
-}
 
 function enviarEnter(e){
     var tecla=(window.event)?event.keyCode:e.which;

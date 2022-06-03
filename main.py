@@ -97,7 +97,6 @@ def ReceiveMessage():
   while stopWhile:
     try:
       msg = (client.recv(2048).decode('UTF-8'))
-      print(msg)
 
       #Login
       if msg[:10] == "#!login!# ":
@@ -143,7 +142,6 @@ def ReceiveMessage():
 @eel.expose
 def SendMessage(message, screen):
   global client
-  print('entrou')
   message = str(f"#!{screen}!# " + str(message))
   client.send(message.encode('UTF-8'))
 

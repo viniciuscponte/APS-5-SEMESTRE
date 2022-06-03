@@ -1,8 +1,6 @@
 function authenticate() {
   var user = document.getElementById("login_user").value;
-  console.log(user);
   var password = document.getElementById("login_password").value;
-  console.log(password);
   if(user != "" && password != "") {
     var msg = user + "  :  " + password.toString();
     sendMessageMain(msg, "login");

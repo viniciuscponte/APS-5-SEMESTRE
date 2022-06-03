@@ -76,17 +76,11 @@ def ClientMessages(client, address):
                     client.send(msg.encode('UTF-8'))
                 else:
                     msg = "#!login!# " + response
-                    print(1)
                     client.send(msg.encode('UTF-8'))
-                    print(2)
                     nome = response.split("  :  ")[0]
-                    print(3)
                     SendMessage(f"#!chat!# {str(nome)} joined the chat!!  :  Servidor", client)
-                    print(4)
                     usernames.append(nome)
-                    print(5)
                     clients.append(client)
-                    print(6)
                     print(f"{str(nome)} completed connection via login!!")
 
 

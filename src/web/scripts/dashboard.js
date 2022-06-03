@@ -1,9 +1,3 @@
-eel.expose(closeDashboardScreen);
-function closeDashboardScreen() {
-  window.close();
-}
-
-
 function irParaChat() {
   eel.openPage("dashboard.html", "chat.html");
 }
